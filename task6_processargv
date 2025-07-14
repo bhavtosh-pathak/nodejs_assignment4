@@ -1,0 +1,23 @@
+const a = process.argv;
+a.forEach((value,index)=>{
+    let type;
+    if(value==='true' || value==='false') {
+        type="boolean";
+        value='true';
+
+    }
+    else if(!isNaN(Number(value))) {
+         type='number';
+        value=Number(value);
+    }
+    else{
+        type='string';
+    }
+    console.log(`Argument ${index+1}: ${value} (${type})`);
+    })
+    console.log('use ctrl c to stop it.');
+    process.on('SIGINT',()=>{
+        console.log('process interrupting');
+        console.log('exiting now...');
+        process.exit();
+    })
